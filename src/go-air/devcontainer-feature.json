@@ -1,0 +1,17 @@
+{
+    "name": "Go Air",
+    "id": "go-air",
+    "version": "1.0.0",
+    "description": "Installs Air, a live reload tool for Go applications, providing hot reloading capabilities during development",
+    "documentationURL": "https://github.com/air-verse/air",
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version of Air to install (e.g., 'latest' or 'v1.49.0')"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/go"
+    ]
+}
