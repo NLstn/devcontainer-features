@@ -1,7 +1,7 @@
 
 # Go Air (go-air)
 
-Installs Air, a live reload tool for Go applications, providing hot reloading capabilities during development
+Installs Air, a live reload tool for Go applications, providing hot reloading capabilities during development.
 
 ## Example Usage
 
@@ -21,4 +21,4 @@ Installs Air, a live reload tool for Go applications, providing hot reloading ca
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/NLstn/devcontainer-features/blob/main/src/go-air/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/NLstn/devcontainer-features/blob/main/src/go-air/devcontainer-feature.json)._
