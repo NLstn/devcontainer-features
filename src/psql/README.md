@@ -1,7 +1,7 @@
 
-# PostgreSQL Client (psql)
+# PostgreSQL Client (psql) (psql)
 
-Installs the PostgreSQL client (psql) for connecting to and managing PostgreSQL databases from the command line.
+Installs the PostgreSQL client (psql) for connecting to and managing PostgreSQL databases from the command line
 
 ## Example Usage
 
@@ -21,4 +21,4 @@ Installs the PostgreSQL client (psql) for connecting to and managing PostgreSQL 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/NLstn/devcontainer-features/blob/main/src/psql/devcontainer-feature.json)._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/NLstn/devcontainer-features/blob/main/src/psql/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
