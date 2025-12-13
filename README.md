@@ -25,6 +25,25 @@ Installs [Air](https://github.com/air-verse/air), a live reload tool for Go appl
 
 See the [go-air README](./src/go-air/README.md) for more details.
 
+### psql
+
+Installs the [PostgreSQL client (psql)](https://www.postgresql.org/docs/current/app-psql.html) for connecting to and managing PostgreSQL databases from the command line.
+
+**Usage:**
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/nlstn/devcontainer-features/psql:1": {
+            "version": "latest"
+        }
+    }
+}
+```
+
+See the [psql README](./src/psql/README.md) for more details.
+
 ## Repository Structure
 
 This repository follows the [Dev Container Feature distribution specification](https://containers.dev/implementors/features-distribution/). Each Feature is located in the `src` directory with its own:
@@ -40,6 +59,7 @@ Features can be tested locally using the [Dev Container CLI](https://github.com/
 ```bash
 npm install -g @devcontainers/cli
 devcontainer features test -f go-air .
+devcontainer features test -f psql .
 ```
 
 ## Contributing
