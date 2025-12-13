@@ -19,7 +19,7 @@ jobs:
           publish-features: "true"
           base-path-to-features: "./src"
           generate-docs: "true"
-          
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -29,20 +29,20 @@ jobs:
         run: |
           # Don't exit on error for this step since PR creation may be restricted
           set +e
-          
+
           # Configure git
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
           git config pull.rebase false
-          
+
           # Create branch and commit
           branch=automated-documentation-update-$GITHUB_RUN_ID
           git checkout -b $branch
           git add */**/README.md
-          
+
           if git commit -m 'Automated documentation update [skip ci]'; then
             git push origin "$branch"
-            
+
             # Try to create PR - this requires the repository setting:
             # "Allow GitHub Actions to create and approve pull requests" to be enabled
             # in Settings > Actions > General > Workflow permissions
