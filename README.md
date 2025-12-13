@@ -62,6 +62,28 @@ devcontainer features test -f go-air .
 devcontainer features test -f psql .
 ```
 
+## Release & Publishing
+
+Features are automatically published to GitHub Container Registry when the "Release Features & Generate Documentation" workflow is triggered manually on the `main` branch.
+
+The workflow:
+1. Publishes feature OCI artifacts to:
+   - `ghcr.io/nlstn/devcontainer-features/go-air`
+   - `ghcr.io/nlstn/devcontainer-features/psql`
+2. Creates a feature collection metadata artifact (this is normal and used by the devcontainer spec)
+3. Generates updated documentation for each feature
+4. Creates a pull request with the documentation updates (requires configuration - see below)
+
+### Enabling Automatic PR Creation
+
+For the workflow to automatically create pull requests with documentation updates, a repository administrator must enable the following setting:
+
+1. Go to **Settings** > **Actions** > **General**
+2. Scroll to **Workflow permissions**
+3. Enable **"Allow GitHub Actions to create and approve pull requests"**
+
+Without this setting enabled, the workflow will still publish features and push documentation updates to a branch, but you'll need to manually create the pull request from that branch.
+
 ## Contributing
 
 Contributions are welcome! Please ensure:

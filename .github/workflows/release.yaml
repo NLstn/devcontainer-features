@@ -27,7 +27,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -e
+          # Don't exit on error for this step since PR creation may be restricted
+          set +e
+          
           # Configure git
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
@@ -40,5 +42,27 @@ jobs:
           
           if git commit -m 'Automated documentation update [skip ci]'; then
             git push origin "$branch"
-            gh pr create --title 'Automated documentation update' --body 'Automated documentation update'
+            
+            # Try to create PR - this requires the repository setting:
+            # "Allow GitHub Actions to create and approve pull requests" to be enabled
+            # in Settings > Actions > General > Workflow permissions
+            if gh pr create --title 'Automated documentation update' \
+                          --body 'Automated documentation update' \
+                          --base main \
+                          --head "$branch" 2>&1; then
+              echo "✅ Pull request created successfully"
+            else
+              echo ""
+              echo "⚠️  Failed to create pull request automatically."
+              echo ""
+              echo "The documentation has been updated and pushed to branch: $branch"
+              echo ""
+              echo "To enable automatic PR creation, a repository administrator must:"
+              echo "1. Go to Settings > Actions > General > Workflow permissions"
+              echo "2. Enable 'Allow GitHub Actions to create and approve pull requests'"
+              echo ""
+              echo "Alternatively, you can manually create a PR from the branch: $branch"
+            fi
+          else
+            echo "No documentation changes to commit"
           fi
