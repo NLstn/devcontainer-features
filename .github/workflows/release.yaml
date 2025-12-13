@@ -49,7 +49,7 @@ jobs:
             if gh pr create --title 'Automated documentation update' \
                           --body 'Automated documentation update' \
                           --base main \
-                          --head "$branch" 2>&1; then
+                          --head "$branch"; then
               echo "✅ Pull request created successfully"
             else
               echo ""
