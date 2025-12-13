@@ -1,0 +1,14 @@
+{
+    "name": "PostgreSQL Client (psql)",
+    "id": "psql",
+    "version": "1.0.0",
+    "description": "Installs the PostgreSQL client (psql) for connecting to and managing PostgreSQL databases from the command line",
+    "documentationURL": "https://www.postgresql.org/docs/current/app-psql.html",
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version of PostgreSQL client to install (e.g., 'latest', '16', '15', '14', '13')"
+        }
+    }
+}
