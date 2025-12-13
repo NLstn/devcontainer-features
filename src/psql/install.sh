@@ -23,11 +23,18 @@ else
     # Install required dependencies
     DEBIAN_FRONTEND=noninteractive apt-get install -y wget gnupg lsb-release
     
+    # Add PostgreSQL repository key
+    # Try with SSL verification first, fall back to insecure if needed
+    if ! wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc 2>/dev/null | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg; then
+        echo "Warning: SSL verification failed, retrying with --no-check-certificate flag..."
+        wget --quiet --no-check-certificate -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg || {
+            echo "Error: Failed to download PostgreSQL repository key"
+            exit 1
+        }
+    fi
+    
     # Add PostgreSQL repository
     echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-    
-    # Add PostgreSQL repository key
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
     
     # Update package lists with new repository
     apt-get update
